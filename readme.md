@@ -7,7 +7,8 @@ mine that happen to share a need to have access to the same set of protos.
 ## feature flags
 
 - `deadlock`: enables deadlock protos.
-- `dota2`: enables dota2 protps.
+- `dota2`: enables dota2 protos.
+- `gcsdk`: enables game coordinator protos (enabled by `deadlock` and `dota2`).
 - `protobuf-src`: enables
 [protobuf_src](https://docs.rs/protobuf-src/latest/protobuf_src/) crate which
 builds `protoc`.

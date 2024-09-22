@@ -16,7 +16,8 @@ prost-types = "0.13.3"
 protobuf-src = { version = "2.1.0", optional = true }
 
 [features]
-deadlock = []
-dota2 = []
+deadlock = ["gcsdk"]
+dota2 = ["gcsdk"]
+gcsdk = []
 protobuf-src = ["dep:protobuf-src"]
 

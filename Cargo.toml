@@ -1,0 +1,22 @@
+[package]
+name = "valveprotos"
+version = "0.0.0"
+edition = "2021"
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+prost = "0.13.3"
+
+[build-dependencies]
+heck = "0.5.0"
+prost-build = "0.13.3"
+prost-types = "0.13.3"
+protobuf-src = { version = "2.1.0", optional = true }
+
+[features]
+deadlock = []
+dota2 = []
+protobuf-src = ["dep:protobuf-src"]
+

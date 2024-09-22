@@ -6,14 +6,14 @@ mine that happen to share a need to have access to the same set of protos.
 
 ## feature flags
 
-`deadlock`: enables deadlock protos.
-`dota2`: enables dota2 protps.
-`protobuf-src`: enables
+- `deadlock`: enables deadlock protos.
+- `dota2`: enables dota2 protps.
+- `protobuf-src`: enables
 [protobuf_src](https://docs.rs/protobuf-src/latest/protobuf_src/) crate which
 builds `protoc`.
 
 ## scripts
 
-`graph-impotrs`: builds a dot graph of imports between protos.
-`fetch-protos`: fetches latest protos from steamdb's
+- `graph-impotrs`: builds a dot graph of imports between protos.
+- `fetch-protos`: fetches latest protos from steamdb's
 [Protobufs](https://github.com/SteamDatabase/Protobufs) repo.

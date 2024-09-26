@@ -15,6 +15,6 @@ builds `protoc`.
 
 ## scripts
 
-- `graph-impotrs`: builds a dot graph of imports between protos.
+- `graph-imports`: builds a dot graph of imports between protos.
 - `fetch-protos`: fetches latest protos from steamdb's
 [Protobufs](https://github.com/SteamDatabase/Protobufs) repo.

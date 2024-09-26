@@ -33,18 +33,21 @@ fn decl_externs(externs: &[ExternDefs], config: &mut Config) {
         for file in &fds.file {
             file.enum_type
                 .iter()
-                .map(|enum_type| enum_type.name().to_upper_camel_case())
+                .map(|enum_type| enum_type.name())
                 .chain(
                     file.message_type
                         .iter()
-                        .map(|message_type| message_type.name().to_upper_camel_case()),
+                        .map(|message_type| message_type.name()),
                 )
                 .for_each(|name| {
-                    if declared.contains(&name) {
+                    if declared.contains(name) {
                         return;
                     }
-                    config.extern_path(format!(".{}", name), format!("{}::{}", rust_path, name));
-                    declared.insert(name);
+                    config.extern_path(
+                        format!(".{}", name),
+                        format!("{}::{}", rust_path, name.to_upper_camel_case()),
+                    );
+                    declared.insert(name.to_string());
                 });
         }
     }

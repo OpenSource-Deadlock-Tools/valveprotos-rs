@@ -15,5 +15,3 @@ pub mod deadlock {
 pub mod dota2 {
     include!(concat!(env!("OUT_DIR"), "/dota2.rs"));
 }
-
-pub use prost;

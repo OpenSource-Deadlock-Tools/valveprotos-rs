@@ -54,7 +54,6 @@ enum CitadelUserMessageIds {
 	k_EUserMsg_CallCheaterVote = 354;
 	k_EUserMsg_MeleeHit = 355;
 	k_EUserMsg_FlexSlotUnlocked = 356;
-	k_EUserMsg_SeasonalAchievementUnlocked = 357;
 }
 
 enum CitadelEntityMessageIds {
@@ -310,10 +309,7 @@ message CCitadelUserMsg_GoldHistory {
 
 message CCitadelUserMsg_CameraController {
 	message Maintain {
-		optional float duration = 1 [default = 1];
-		optional .CMsgVector maintain_vector = 2;
-		optional float maintain_float = 3;
-		optional bool maintain_current = 4;
+		optional float duration = 1 [default = 0];
 	}
 
 	message Approach {
@@ -595,9 +591,4 @@ message CCitadelUserMessage_MeleeHit {
 message CCitadelUserMsg_FlexSlotUnlocked {
 	optional int32 team_number = 1;
 	optional int32 flexslot_unlocked = 2;
-}
-
-message CCitadelUserMsg_SeasonalAchievementUnlocked {
-	optional uint32 account_id = 1;
-	optional uint32 hero_id = 2;
 }

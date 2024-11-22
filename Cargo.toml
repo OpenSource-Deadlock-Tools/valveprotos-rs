@@ -7,12 +7,12 @@ edition = "2021"
 path = "lib.rs"
 
 [dependencies]
-prost = "0.13.3"
+prost = "0.13.4"
 
 [build-dependencies]
 heck = "0.5.0"
-prost-build = "0.13.3"
-prost-types = "0.13.3"
+prost-build = "0.13.4"
+prost-types = "0.13.4"
 protobuf-src = { version = "2.1.0", optional = true }
 
 [features]

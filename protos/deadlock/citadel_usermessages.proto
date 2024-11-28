@@ -52,6 +52,8 @@ enum CitadelUserMessageIds {
 	k_EUserMsg_TeamMsg = 352;
 	k_EUserMsg_PlayerRespawned = 353;
 	k_EUserMsg_CallCheaterVote = 354;
+	k_EUserMsg_MeleeHit = 355;
+	k_EUserMsg_FlexSlotUnlocked = 356;
 }
 
 enum CitadelEntityMessageIds {
@@ -143,6 +145,9 @@ message CCitadelUserMessage_Damage {
 	optional int32 victim_shield_new = 18;
 	optional int32 hits = 19;
 	optional int32 health_lost = 20;
+	optional int32 hitgroup_id = 21;
+	optional int32 entindex_attacking_object = 22 [default = -1];
+	optional .CMsgVector damage_direction = 23;
 }
 
 message PingCommonData {
@@ -215,10 +220,9 @@ message CCitadelUserMsg_AbilitiesChanged {
 		ESwappedActivatedAbility = 3;
 	}
 
-	optional int32 entindex_purchaser = 1 [default = -1];
-	optional int32 entindex_ability = 2 [default = -1];
-	optional uint32 ability_id = 3;
-	optional .CCitadelUserMsg_AbilitiesChanged.Change change = 4 [default = EInvalid];
+	optional int32 purchaser_player_slot = 1 [default = -1];
+	optional uint32 ability_id = 2;
+	optional .CCitadelUserMsg_AbilitiesChanged.Change change = 3 [default = EInvalid];
 }
 
 message CCitadelUserMsg_AbilityInterrupted {
@@ -403,6 +407,8 @@ message CCitadelUserMessage_BulletHit {
 	optional int32 shotid = 1;
 	optional int32 pellet = 2;
 	optional int32 hit_entindex = 3 [default = -1];
+	optional int32 weapon_entindex = 4 [default = -1];
+	optional bool is_predicted = 5;
 }
 
 message CCitadelUserMessage_ObjectiveMask {
@@ -486,6 +492,7 @@ message CCitadelUserMessage_CurrencyChanged {
 	optional .CMsgVector victim_pos = 7;
 	optional int32 playsound = 8;
 	optional uint32 ability_id = 9;
+	optional uint32 new_value = 10;
 }
 
 message CCitadelUserMessage_GameOver {
@@ -577,4 +584,14 @@ message CCitadelUserMsg_PlayerRespawned {
 
 message CCitadelUserMsg_CallCheaterVote {
 	required int32 player_slot = 1 [default = -1];
+}
+
+message CCitadelUserMessage_MeleeHit {
+	optional int32 hit_entindex = 1 [default = -1];
+	optional bool heavy = 2;
+}
+
+message CCitadelUserMsg_FlexSlotUnlocked {
+	optional int32 team_number = 1;
+	optional int32 flexslot_unlocked = 2;
 }

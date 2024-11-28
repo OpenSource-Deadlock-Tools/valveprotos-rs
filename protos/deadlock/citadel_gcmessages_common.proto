@@ -111,6 +111,15 @@ enum ECitadelRegionMode {
 	k_ECitadelRegionMode_Oceania = 5;
 }
 
+enum ECitadelLeaderboardRegion {
+	k_ECitadelLeaderboardRegion_None = 0;
+	k_ECitadelLeaderboardRegion_Europe = 1;
+	k_ECitadelLeaderboardRegion_Asia = 2;
+	k_ECitadelLeaderboardRegion_NAmerica = 3;
+	k_ECitadelLeaderboardRegion_SAmerica = 4;
+	k_ECitadelLeaderboardRegion_Oceania = 5;
+}
+
 enum ECitadelGameMode {
 	k_ECitadelGameMode_Invalid = 0;
 	k_ECitadelGameMode_Normal = 1;
@@ -181,9 +190,9 @@ message CMsgStartFindingMatchInfo {
 	optional string server_command_string = 2;
 	optional .ECitadelMatchMode match_mode = 3 [default = k_ECitadelMatchMode_Invalid];
 	optional .ECitadelGameMode game_mode = 5 [default = k_ECitadelGameMode_Invalid];
-	optional bool solo_match = 6;
 	optional .ECitadelBotDifficulty bot_difficulty = 7 [default = k_ECitadelBotDifficulty_None];
 	optional .ECitadelRegionMode region_mode = 8 [default = k_ECitadelRegionMode_ROW];
+	optional bool prefer_solo_only = 9;
 }
 
 message CMsgAnyToGCReportAsserts {
@@ -230,6 +239,7 @@ message CSOCitadelParty {
 		optional bool cheats_enabled = 7;
 		repeated .CSOCitadelParty.ServerRegion available_regions = 8;
 		optional bool duplicate_heroes_enabled = 9;
+		optional bool experimental_heroes_enabled = 10;
 	}
 
 	message Member {
@@ -291,6 +301,7 @@ message CSOCitadelParty {
 	optional .ECitadelRegionMode region_mode = 15 [default = k_ECitadelRegionMode_ROW];
 	optional bool is_private_lobby = 16;
 	optional .CSOCitadelParty.PrivateLobbySettings private_lobby_settings = 17;
+	optional bool desires_laning_together = 18;
 }
 
 message CMsgMatchPlayerPathsData {
@@ -475,7 +486,6 @@ message CMsgMatchMetaDataContents {
 		repeated float stats_type_stat = 21 [packed = true];
 		repeated .CMsgMatchMetaDataContents.BookReward book_rewards = 22;
 		optional uint32 abandon_match_time_s = 23;
-		optional uint32 ranked_badge_level = 24;
 	}
 
 	message Objective {
@@ -529,6 +539,8 @@ message CMsgMatchMetaDataContents {
 		optional bool is_high_skill_range_parties = 20;
 		optional bool low_pri_pool = 21;
 		optional bool new_player_pool = 22;
+		optional uint32 average_badge_team0 = 23;
+		optional uint32 average_badge_team1 = 24;
 	}
 
 	enum EMatchOutcome {
